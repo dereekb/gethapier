@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "gethapier": "apps/gethapier",
+    "gethapier-e2e": "apps/gethapier-e2e"
+  }
+}
