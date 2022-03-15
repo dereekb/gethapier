@@ -1,1 +1,10 @@
-<ui-view></ui-view>
+<div dbxSetStyle="gethapier-app">
+  <dbx-pagebar>
+    <dbx-anchor left [anchor]="homeAnchor">
+      <button mat-raised-button>
+        <mat-icon>person</mat-icon> GetHapier
+      </button>
+    </dbx-anchor>
+  </dbx-pagebar>
+  <ui-view></ui-view>
+</div>

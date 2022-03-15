@@ -23,7 +23,8 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/gethapier/src/favicon.ico",
-          "apps/gethapier/src/assets"
+          "apps/gethapier/src/assets",
+          "apps/gethapier/src/lib"
         ],
         "styles": ["apps/gethapier/src/styles.scss"],
         "scripts": []

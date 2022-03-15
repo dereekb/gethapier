@@ -1,3 +1,12 @@
-<div>
-
-</div>
+<dbx-content-page>
+  <dbx-content-container>
+    <dbx-section-page header="Meetings List">
+      <div sectionHeader>
+        <dbx-action #addAction dbxActionLogger [dbxActionValue]="1" dbxActionAutoModify
+          [dbxActionHandler]="handleCreateMeeting">
+          <dbx-button #addButton color="accent" dbxActionButton text="Add Meetup"></dbx-button>
+        </dbx-action>
+      </div>
+    </dbx-section-page>
+  </dbx-content-container>
+</dbx-content-page>

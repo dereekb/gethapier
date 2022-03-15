@@ -9,11 +9,11 @@ $app-typography-config: mat.define-typography-config();
 @include dbx.core($app-typography-config);
 @include dbx-form.core($app-typography-config);
 
-@include style.gethapier-theme('.doc-app');
+@include style.gethapier-theme('.gethapier-app');
 
 html,
 body {
-  background: black;
+  background: white;
   height: 100%;
   overflow-x: hidden;
 }
