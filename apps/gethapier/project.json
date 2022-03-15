@@ -5,6 +5,13 @@
   "prefix": "gethapier",
   "targets": {
     "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx nx run gethapier:build-base",
+        "color": true
+      }
+    },
+    "build-base": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
@@ -23,8 +30,7 @@
       },
       "configurations": {
         "production": {
-          "budgets": [
-            {
+          "budgets": [{
               "type": "initial",
               "maximumWarning": "500kb",
               "maximumError": "1mb"
@@ -35,12 +41,10 @@
               "maximumError": "4kb"
             }
           ],
-          "fileReplacements": [
-            {
-              "replace": "apps/gethapier/src/environments/environment.ts",
-              "with": "apps/gethapier/src/environments/environment.prod.ts"
-            }
-          ],
+          "fileReplacements": [{
+            "replace": "apps/gethapier/src/environments/environment.ts",
+            "with": "apps/gethapier/src/environments/environment.prod.ts"
+          }],
           "outputHashing": "all"
         },
         "development": {
@@ -58,10 +62,12 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "gethapier:build:production"
+          "browserTarget": "gethapier:build-base:production",
+          "port": 9810
         },
         "development": {
-          "browserTarget": "gethapier:build:development"
+          "browserTarget": "gethapier:build-base:development",
+          "port": 9810
         }
       },
       "defaultConfiguration": "development"
@@ -69,7 +75,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "gethapier:build"
+        "browserTarget": "gethapier:build-base"
       }
     },
     "lint": {
@@ -83,10 +89,30 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/gethapier"],
+      "outputs": ["coverage/apps/gethapier", "./.reports/jest/gethapier.junit.xml"],
       "options": {
         "jestConfig": "apps/gethapier/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "dependsOn": [{
+        "target": "build",
+        "projects": "self"
+      }],
+      "options": {
+        "command": "firebase deploy --only hosting"
+      }
+    },
+    "ci-deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "dependsOn": [{
+        "target": "build",
+        "projects": "self"
+      }],
+      "options": {
+        "command": "firebase deploy --only hosting --token \"$FIREBASE_TOKEN\""
       }
     }
   },

@@ -7,6 +7,7 @@
 
 # dependencies
 /node_modules
+**/node_modules
 
 # IDEs and editors
 /.idea
@@ -39,3 +40,25 @@ testem.log
 Thumbs.db
 
 .angular
+
+# firebase
+.firebase/*
+.firebaserc
+firebase-debug.log
+
+npm-debug.log*
+firebase-debug.log*
+database-debug.log*
+firestore-debug.log*
+pubsub-debug.log*
+ui-debug.log*
+
+# Environment
+service_account.json
+.npmrc
+
+# Docker
+/.cache
+
+# CI/Jest
+/.reports

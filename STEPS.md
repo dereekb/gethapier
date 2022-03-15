@@ -8,6 +8,8 @@ npx create-nx-workspace --preset=angular
 ✔ Use Nx Cloud? (It's free and doesn't require registration.) · Yes
 ```
 
+Delete decorate-angular-cli.js, and update the package.json file's postinstall to not call this file. Remove all entries from "scripts" except for post-install.
+
 ### 2. Create Github Repo
 https://github.com/new
 https://github.com/dereekb/gethapier
@@ -131,14 +133,34 @@ i  Writing project information to .firebaserc...
 ```
 
 Some additional changes need to be done after this:
-1. Update hosting to replace "public" to be "dist/packages/gethapier"
+1. Update hosting to replace "public" to be "dist/apps/gethapier"
 2. Delete the public folder/directory
 3. Delete the functions folder/directory
-   
-### 8. Initialize Functions App
+
+### 8. Create/Generate Service Account Private Key
+https://console.firebase.google.com/u/0/project/gethapier/settings/serviceaccounts/adminsdk
+
+Save the private key as service_account.json and place it in this directory. Make sure .gitignore ignores this value, as we don't want it to be uploaded as part of the repository.
+
+### 9. Initialize Functions App
 ```
 npm i @nrwl/nest
 npx nx generate @nrwl/nest:application gethapier-api
 npm i firebase firebase-admin firebase-functions
 npm i -D @firebase/rules-unit-testing firebase-functions-test firebase-tools
 ```
+
+### 10. Configure project.json for both gethapier and gethapier-api
+Our project.json needs to be updated with our target.
+
+### 11. Configure Dockerfile and Emulator Scripts
+The easiest way to run the firebase emulators reliably across dev computers is to run it within a Docker container.
+
+Update the firebase.json emulator ports to the desired ports, and make sure the docker container exposes them via the docker-compose configuration.
+
+Now run ./serve-server.sh, and if everything is working correctly, you should see the emulator up at http://0.0.0.0:9800.
+
+### 12. Install Dependencies
+We now can start adding our project's dependencies. Since we are using Nx, we install dependencies to the root package.json, and it will handle the rest.
+
+When our server dependencies change we will have to re-build the docker image as it needs to re-download node_modules. You can use `reset.sh` to rebuild the docker image.
