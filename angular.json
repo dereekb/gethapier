@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "gethapier": "apps/gethapier",
+    "gethapier-api": "apps/gethapier-api",
     "gethapier-e2e": "apps/gethapier-e2e"
   }
 }

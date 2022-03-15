@@ -130,4 +130,15 @@ i  Writing project information to .firebaserc...
 ✔  Firebase initialization complete!
 ```
 
-7. 
+Some additional changes need to be done after this:
+1. Update hosting to replace "public" to be "dist/packages/gethapier"
+2. Delete the public folder/directory
+3. Delete the functions folder/directory
+   
+### 8. Initialize Functions App
+```
+npm i @nrwl/nest
+npx nx generate @nrwl/nest:application gethapier-api
+npm i firebase firebase-admin firebase-functions
+npm i -D @firebase/rules-unit-testing firebase-functions-test firebase-tools
+```

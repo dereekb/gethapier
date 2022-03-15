@@ -10,7 +10,7 @@
     ]
   },
   "hosting": {
-    "public": "public",
+    "public": "dist/packages/gethapier",
     "ignore": [
       "firebase.json",
       "**/.*",
