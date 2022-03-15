@@ -163,4 +163,15 @@ Now run ./serve-server.sh, and if everything is working correctly, you should se
 ### 12. Install Dependencies
 We now can start adding our project's dependencies. Since we are using Nx, we install dependencies to the root package.json, and it will handle the rest.
 
+```
+npm i @dereekb/util @dereekb/date @dereekb/rxjs @dereekb/dbx-analytics @dereekb/dbx-web @dereekb/dbx-core @dereekb/dbx-form @dereekb/firebase --legacy-peer-deps
+```
+
 When our server dependencies change we will have to re-build the docker image as it needs to re-download node_modules. You can use `reset.sh` to rebuild the docker image.
+
+### 13. Run Development Services
+Open up a second terminal tab (use command+T on macOS). In one window run `./serve-server.sh` and in the other run `./serve-web.sh`.
+
+The Firebase emulators will run in the docker container, while the Angular CLI watch will run in the macOS context.
+
+You should be able to open the live-reload website at http://localhost:9810/ and the server overview at http://localhost:9800/

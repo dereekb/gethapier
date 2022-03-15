@@ -12,7 +12,7 @@ ENV HUSKY=0
 
 # Install project dependencies to /code/node_modules. 
 # This is done to prevent node_modules system package conflicts
-RUN npm install
+RUN npm ci
 
 # Create volume mount point at /code
 VOLUME ["/code"]
