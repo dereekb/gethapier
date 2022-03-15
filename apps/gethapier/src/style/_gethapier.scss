@@ -1,0 +1,16 @@
+@use 'node_modules/@angular/material/core/theming/palette';
+@use '@angular/material'as mat;
+@use '../../../../node_modules/@dereekb/dbx-web'as dbx;
+@use '../../../../node_modules/@dereekb/dbx-form'as dbx-form;
+
+$gethapier-primary: mat.define-palette(mat.$amber-palette);
+$gethapier-accent: mat.define-palette(mat.$blue-palette);
+$gethapier-warn: mat.define-palette(mat.$red-palette);
+$gethapier-mat-theme: mat.define-light-theme((color: (primary: $gethapier-primary, accent: $gethapier-accent, warn: $gethapier-warn), density: null, typography: null));
+$gethapier-dbx-theme-with-banner-config: dbx.quick-define-dbx-config-via-banners(0);
+$gethapier-theme: dbx.define-dbx-theme-config($gethapier-mat-theme, $gethapier-dbx-theme-with-banner-config);
+
+@mixin gethapier-theme($root-selector) {
+  @include dbx.theme($root-selector, $gethapier-theme);
+  @include dbx-form.theme($root-selector, $gethapier-theme);
+}

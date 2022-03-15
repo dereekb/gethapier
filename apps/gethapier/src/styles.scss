@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material'as mat;
+@use '../../../node_modules/@dereekb/dbx-web'as dbx;
+@use '../../../node_modules/@dereekb/dbx-form'as dbx-form;
+@use './style/style';
+
+$app-typography-config: mat.define-typography-config();
+
+@include mat.core($app-typography-config);
+@include dbx.core($app-typography-config);
+@include dbx-form.core($app-typography-config);
+
+@include style.gethapier-theme('.doc-app');
+
+html,
+body {
+  background: black;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -164,7 +164,11 @@ Now run ./serve-server.sh, and if everything is working correctly, you should se
 We now can start adding our project's dependencies. Since we are using Nx, we install dependencies to the root package.json, and it will handle the rest.
 
 ```
-npm i @dereekb/util @dereekb/date @dereekb/rxjs @dereekb/dbx-analytics @dereekb/dbx-web @dereekb/dbx-core @dereekb/dbx-form @dereekb/firebase --legacy-peer-deps
+npm i @dereekb/util @dereekb/browser @dereekb/date @dereekb/rxjs @dereekb/dbx-analytics @dereekb/dbx-web @dereekb/dbx-core @dereekb/dbx-form @dereekb/firebase --legacy-peer-deps
+npm i @angular/fire && npx nx g @angular/fire:ng-add
+npm i @uirouter/angular @uirouter/core @uirouter/rx
+npm i ngx-mat-intl-tel-input ngx-editor ng-overlay-container angular-resize-event ngx-infinite-scroll @angular/flex-layout --legacy-peer-deps
+npm i @ngrx/data @ngrx/effects @ngrx/entity @ngrx/store @ngrx/component-store @ngx-formly/core@6.0.0-next.8 @ngx-formly/material@6.0.0-next.8 @ngx-formly/schematics@6.0.0-next.8 linkify-string@4.0.0-beta.3 linkifyjs@4.0.0-beta.3 change-case
 ```
 
 When our server dependencies change we will have to re-build the docker image as it needs to re-download node_modules. You can use `reset.sh` to rebuild the docker image.

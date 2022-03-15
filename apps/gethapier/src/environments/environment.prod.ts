@@ -1,3 +1,6 @@
-export const environment = {
-  production: true,
+import { base, GetHapierEnvironment } from "./base";
+
+export const environment: GetHapierEnvironment = {
+  ...base,
+  production: true
 };
