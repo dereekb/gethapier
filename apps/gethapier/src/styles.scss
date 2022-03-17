@@ -1,6 +1,6 @@
 @use '@angular/material'as mat;
-@use '../../../node_modules/@dereekb/dbx-web'as dbx;
-@use '../../../node_modules/@dereekb/dbx-form'as dbx-form;
+@use '@dereekb/dbx-web'as dbx;
+@use '@dereekb/dbx-form'as dbx-form;
 @use './style/style';
 
 $app-typography-config: mat.define-typography-config();
